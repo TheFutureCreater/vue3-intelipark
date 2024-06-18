@@ -1,0 +1,22 @@
+{
+  "stationId": 0,
+  "operatorId": 0,
+  "parkId": 0,
+  "stationName": "",
+  "countryCode": "",
+  "areaCode": "",
+  "stationAddress": "",
+  "serviceTel": "",
+  "stationType": 0,
+  "stationStatus": 0,
+  "stationLng": 0,
+  "stationLat": 0,
+  "siteGuide": "",
+  "stationConstruction": 0,
+  "businessHours": "",
+  "electricityFee": 0,
+  "serviceFee": 0,
+  "parkFee": 0,
+  "payment": 0,
+  "stationNote": ""
+}
