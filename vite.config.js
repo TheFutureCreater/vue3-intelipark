@@ -18,7 +18,7 @@ export default defineConfig({
     })
   ],
   build: {
-    outDir: 'docs',
+    outDir: 'docs'
     // chunkSizeWarningLimit: 2000 // 将限制调整到 1000 kB
   },
   // base: '/vue3-intellipark',
