@@ -18,7 +18,7 @@ export default defineConfig({
     })
   ],
   build: {
-    chunkSizeWarningLimit: 2000 // 将限制调整到 1000 kB
+    // chunkSizeWarningLimit: 2000 // 将限制调整到 1000 kB
   },
   // base: '/vue3-intellipark',
   resolve: {

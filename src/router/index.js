@@ -1,67 +1,54 @@
-import { createRouter, createWebHistory } from 'vue-router'
 // import { useUserStore } from '@/stores'
-import LoginPage from '@/views/login/LoginPage.vue'
-import AdminLayoutContainer from '@/views/admin/layout/LayoutContainer.vue'
-import ScreenLayout from '@/views/screen/layout/index.vue'
-import AdminHomeIndex from '@/views/admin/home/index.vue'
-import BasicScreen from '@/views/screen/basic/index.vue'
-import BasicIndex from '@/views/admin/basic/index.vue'
-import BasicUser from '@/views/admin/basic/components/BasicUser.vue'
-import LogIndex from '@/views/admin/log/index.vue'
-import LogCharge from '@/views/admin/log/components/LogCharge.vue'
-import LogFee from '@/views/admin/log/components/LogFee.vue'
-import LogFeedback from '@/views/admin/log/components/LogFeedback.vue'
-import FacilityContainer from '@/views/admin/basic/components/FacilityContainer.vue'
-import StationLocation from '@/views/admin/basic/components/StationLocation.vue'
+
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', redirect: '/login' },
-    { path: '/login', component: LoginPage },
+    { path: '/login', component: () => import('@/views/login/LoginPage.vue') },
     {
       path: '/admin',
       redirect: '/admin/basic/location',
-      component: AdminLayoutContainer,
+      component: () => import('@/views/admin/layout/LayoutContainer.vue'),
       children: [
         {
           path: '/admin/home',
-          component: AdminHomeIndex
+          component: () => import('@/views/admin/home/index.vue')
         },
         {
           path: '/admin/basic',
-          component: BasicIndex,
+          component: () => import('@/views/admin/basic/index.vue'),
           children: [
-            { path: '/admin/basic/equip', component: FacilityContainer },
-            { path: '/admin/basic/location', component: StationLocation },
-            { path: '/admin/basic/user', component: BasicUser }
+            { path: '/admin/basic/equip', component: () => import('@/views/admin/basic/components/FacilityContainer.vue') },
+            { path: '/admin/basic/location', component: () => import('@/views/admin/basic/components/StationLocation.vue') },
+            { path: '/admin/basic/user', component: () => import('@/views/admin/basic/components/BasicUser.vue') }
           ]
         },
         {
           path: '/admin/log',
-          component: LogIndex,
+          component: () => import('@/views/admin/log/index.vue'),
           children: [
-            { path: '/admin/log/feedback', component: LogFeedback },
-            { path: '/admin/log/fee', component: LogFee },
-            { path: '/admin/log/charge', component: LogCharge }
+            { path: '/admin/log/feedback', component: () => import('@/views/admin/log/components/LogFeedback.vue') },
+            { path: '/admin/log/fee', component: () => import('@/views/admin/log/components/LogFee.vue') },
+            { path: '/admin/log/charge', component: () => import('@/views/admin/log/components/LogCharge.vue') }
           ]
         }
       ]
     },
     {
       path: '/screen',
-      // redirect: '/screen/charts',
-      component: ScreenLayout,
-      children: [{ path: '/screen/charts', component: BasicScreen }]
+      component: () => import('@/views/screen/layout/index.vue'),
+      children: [{ path: '/screen/charts', component: () => import('@/views/screen/basic/index.vue') }]
     }
   ]
 })
 
+
 // 登录访问拦截 => 默认是直接放行的,根据返回值决定，是放行还是拦截
 // 如果没有token, 且访问的是非登录页，拦截到登录，其他情况正常放行
 // router.beforeEach((to) => {
-//   const useStore = useUserStore()
-//   if (!useStore.token && to.path !== '/login') return '/login'
-// })
-
-export default router
+  //   const useStore = useUserStore()
+  //   if (!useStore.token && to.path !== '/login') return '/login'
+  // })
+  export default router
