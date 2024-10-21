@@ -8,7 +8,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base: './',
+  base: '/vue3-intelipark/', // github仓库名称
   plugins: [
     vue(),
     AutoImport({
