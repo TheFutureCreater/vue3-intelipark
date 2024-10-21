@@ -1,1 +1,0 @@
-import{aM as a}from"./index-_q3JvgRk.js";const t=r=>a({url:"/park/list",params:r}),s=r=>a({url:"/park",method:"POST",data:r}),o=r=>a({url:`/park/${r.parkId}`,method:"PUT",data:r}),d=r=>a({url:"/park",method:"DELETE",data:r});export{s as a,d,o as e,t as g};
